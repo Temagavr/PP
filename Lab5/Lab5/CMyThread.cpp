@@ -9,7 +9,6 @@ DWORD WINAPI ThreadProc(const LPVOID lpParam)
     delta = rand() % (10 - 1 + 1) + 1;
     EnterCriticalSection(&CriticalSection);
     int* value = (int*)lpParam;
-    //int *param = (int*)lpParam;
     *value = *value + delta;
     *(int*)lpParam = *value;
 
@@ -35,6 +34,8 @@ int CMyThread::RunAllThreads()
 
     // ожидание окончания работы двух потоков
     WaitForMultipleObjects(handles.size(), handles.data(), true, INFINITE);
+
+    std::cout << value << std::endl;
 
     DeleteCriticalSection(&CriticalSection);
 
