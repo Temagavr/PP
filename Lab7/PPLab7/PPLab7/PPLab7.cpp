@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
     for (int i = 0; i < number; i++)
     {
         my_class[i] = new CTask(i);
+        Sleep(0.5);
         worker.ExecuteTask(my_class[i]);
     }
 

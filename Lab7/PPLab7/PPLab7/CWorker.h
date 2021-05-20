@@ -1,20 +1,20 @@
 #pragma once
 #include "IWorker.h"
-#include <vector>
 
 class CWorker : IWorker
 {
 public:
-	CWorker();
+	CWorker(){};
 
-	~CWorker();
+	~CWorker()
+	{
+		WaitForSingleObject(handle, INFINITE);
+	};
 
 	bool ExecuteTask(ITask* taskToRun) override;
 	bool IsBusy() override;
 
 private:
-	std::vector<HANDLE> handles;
-	bool isBisy = false;
-	bool stopWorkingFlag = false;
+	HANDLE handle;
 
 };
